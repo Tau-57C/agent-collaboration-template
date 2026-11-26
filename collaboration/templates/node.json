@@ -1,0 +1,13 @@
+{
+  "id": "N03",
+  "participants": [
+    {
+      "id": "assistant-a",
+      "label": "First selected assistant"
+    },
+    {
+      "id": "assistant-b",
+      "label": "Second selected assistant"
+    }
+  ]
+}

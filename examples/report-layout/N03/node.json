@@ -1,0 +1,29 @@
+{
+  "id": "N03",
+  "participants": [
+    {
+      "id": "compact",
+      "label": "Codex"
+    },
+    {
+      "id": "narrative",
+      "label": "Qoder"
+    },
+    {
+      "id": "validation",
+      "label": "Gemini CLI"
+    },
+    {
+      "id": "reader-first",
+      "label": "Claude Code"
+    },
+    {
+      "id": "visual-map",
+      "label": "GitHub Copilot CLI"
+    },
+    {
+      "id": "evidence-first",
+      "label": "OpenCode"
+    }
+  ]
+}

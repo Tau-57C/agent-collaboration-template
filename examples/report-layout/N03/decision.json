@@ -1,0 +1,9 @@
+{
+  "approved_by": "Fictional example user",
+  "merge_owner": "narrative",
+  "adopt": [
+    "compact",
+    "validation"
+  ],
+  "notes": "Use Compact's three-section ordering. Add Validation's sources and reproduction commands inside the verification section. Keep no fourth section."
+}
