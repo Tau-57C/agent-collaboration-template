@@ -2,53 +2,94 @@
 
 [简体中文](README.zh-CN.md)
 
-A reusable, file-based workflow for switching between AI assistants and getting independent second opinions. A human chooses who participates at each checkpoint, opens peer review, and approves what goes back into the project.
+A file-based workflow for handing work between AI assistants and getting independent second opinions. Keep one mainline, choose participants for each independent round, and decide which results enter the project.
 
 ## Quick start
 
-1. **Set up the project.** Use the template directly for a new project. For an existing project, bring in the core files and ask one assistant to import the progress and available conversations. [New project and existing project setup](collaboration/ONBOARDING.md)
-2. **Start on the mainline.** Fill in [PROJECT.md](PROJECT.md). When switching assistants, say “Continue from the mainline.”
-3. **Start an independent round.** Say “Branch from N03. Invite Codex and Gemini.” The current assistant prepares a shared brief and records the selected participants. Open a separate conversation for each participant and give all of them the same node.
-4. **Review, then decide.** After every selected participant delivers, say “Open review for N03.” Read the submissions and have the participants compare them. Tell one assistant what to adopt and ask it to merge and verify. The next assistant resumes from the updated mainline.
+1. **Install the files.** Use the GitHub template for a new repository, copy the four core items into a local project, or use the Windows or macOS launcher. The command-line installer supports a read-only preview. [Installation and import](collaboration/ONBOARDING.md)
+2. **Start or import.** Say “Initialize collaboration” for a new project or “Import the existing project” for ongoing work. `PROJECT.md` holds progress, decisions, open discussions, and the next action.
+3. **Choose an independent round.** Name the participants and the source checkpoint. Open a fresh session for each. They use the same frozen inputs and save their results in their own branches.
+4. **Open review and decide.** After all selected participants deliver, open peer review. Tell one merge owner what to adopt and ask them to verify it. Then resume from the mainline.
 
-[Workflow and short prompts](collaboration/GUIDE.md) · [Participant examples](collaboration/PARTICIPANTS.md) · [Tool compatibility](collaboration/COMPATIBILITY.md) · [Complete fictional example](examples/report-layout/N03/)
+## Install
 
-## Install into an existing project
+- **Windows.** Download `Agent-Collaboration-Setup.exe` from [Releases](https://github.com/Tau-57C/agent-collaboration-template/releases), open it, and choose the project folder. Python 3.11 or later must be accessible through `py -3` or `python`.
+- **macOS.** Download and extract the source ZIP from [Releases](https://github.com/Tau-57C/agent-collaboration-template/releases), then open `Install on macOS.command` in that folder and choose the project root. Python 3.11 or later must be available as `python3`.
+- **Manual copy and command line.** Copy `AGENTS.md`, `PROJECT.md`, `collaboration/`, and `.gitignore` into the project root. For existing projects, preserve existing records and instructions. The previewable command-line installer can do this for you. [Installation options](collaboration/ONBOARDING.md#install-the-collaboration-files)
 
-From a fresh copy of this template, run the preview, then apply the installation:
+The file installer sets up collaboration files. Your assistant imports history and handles local checkpoint commits after you ask it to start or import. You can use the workflow with files alone by setting “Checkpoint Git” to “Files only.” [Local Git rules](collaboration/GUIDE.md#local-git-at-checkpoints)
 
-```sh
-python tools/install.py "/path/to/existing-project"
-python tools/install.py "/path/to/existing-project" --apply
-```
+## Copyable prompts
 
-Use Python 3.11 or newer. The installer preserves existing project progress, archive entries, and agent instructions. After installation, ask one assistant to “Import the existing project” to reconstruct progress and archive the available conversations. [Import steps](collaboration/ONBOARDING.md)
+Replace N03 and bracketed placeholders with your checkpoint and task details.
 
-## What the repo contains
+### Set up
+
+| When             | Who                 | Say                          |
+| ---------------- | ------------------- | ---------------------------- |
+| New project      | Project assistant   | Initialize collaboration.    |
+| Existing project | Importing assistant | Import the existing project. |
+
+### Mainline and handoff
+
+| When                              | Who                          | Say                                                             |
+| --------------------------------- | ---------------------------- | --------------------------------------------------------------- |
+| Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         |
+| Add materials                     | Current assistant            | Use [file] as input for the current task.                       |
+| Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    |
+| Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              |
+| Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             |
+| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     |
+| Resume a discussion               | Incoming assistant           | Continue from the mainline and resume our last discussion.      |
+| Outgoing assistant is unavailable | Incoming assistant           | Continue from the mainline using the earlier messages I pasted. |
+
+### Branch, review, and merge
+
+| When                     | Who                       | Say                                                                                  |
+| ------------------------ | ------------------------- | ------------------------------------------------------------------------------------ |
+| Branch from a checkpoint | Mainline assistant        | Branch from N03. Invite [participants] to do [task] independently.                   |
+| Start independent work   | Each fresh session        | Work independently on N03 and record your delivery.                                  |
+| Check deliveries         | Coordinator               | Who still needs to deliver for N03?                                                  |
+| Follow up before review  | Selected branch assistant | Stay independent and add [item].                                                     |
+| Open review              | Coordinator               | Open review for N03.                                                                 |
+| Review peers             | Each branch assistant     | Review the other N03 submissions and available dialogue against the shared criteria. |
+| Decide and merge         | Designated merge owner    | For N03, adopt [items], then merge and verify.                                       |
+
+### As needed
+
+| When                        | Who                           | Say                                                              |
+| --------------------------- | ----------------------------- | ---------------------------------------------------------------- |
+| Archive the exact wording   | Assistant with the original   | Archive this conversation.                                       |
+| Inspect local versions      | Assistant with project access | Show the last five local Git commits.                            |
+| Turn off checkpoint commits | Current assistant             | Record checkpoints in files only. Disable automatic Git commits. |
+
+## Project files
 
 | Path | Purpose |
 |---|---|
 | [AGENTS.md](AGENTS.md) | Shared instructions for assistants |
-| [PROJECT.md](PROJECT.md) | Current state, decisions, and checkpoints |
-| [collaboration/templates/](collaboration/templates/) | Shared brief, participant roster, submissions, approvals, and reviews |
-| [collaboration/ARCHIVE.md](collaboration/ARCHIVE.md) | Links to transcripts and decisions |
-| [examples/](examples/) | Fictional records that show a round with six participants |
-| [tools/install.py](tools/install.py) | Optional installer for existing projects, with a read-only preview |
-| [tools/check_node.py](tools/check_node.py) | Optional local checker for the roster, review gate, and merge records |
+| [PROJECT.md](PROJECT.md) | Mainline progress, decisions, handoff, and checkpoints |
+| [collaboration/GUIDE.md](collaboration/GUIDE.md) | Workflow details and bilingual prompts |
+| [collaboration/PARTICIPANTS.md](collaboration/PARTICIPANTS.md) | Roster examples across clients and sessions |
+| [collaboration/ARCHIVE.md](collaboration/ARCHIVE.md) | Index of dialogue, reviews, and decisions |
+| [examples/](examples/) | A fictional six-participant round from delivery through merge |
+| [tools/check_node.py](tools/check_node.py) | Optional check of records, participant statuses, review, and merge |
 
-Agents may have different access to chat history. They can share visible messages by exporting them to ordinary files. The independent phase follows an explicit read scope. Use workspace permissions when you need enforced isolation. Session exports, real working nodes, and branch artifacts should stay local by default. The included Git ignore rules cover the designated runtime folders.
+Clients differ in how they expose visible conversation history. Export or copy project dialogue as needed. The independent phase follows the shared read scope. Use workspace access controls when you require enforced isolation. [Client compatibility](collaboration/COMPATIBILITY.md)
 
-## Local verification
-
-The workflow works with Markdown and JSON files. The optional checker uses the Python 3.11+ standard library.
+## Verify the template or build the Windows installer
 
 ```sh
 python tools/check_node.py examples/report-layout/N03
 python -m unittest discover -s tests -v
 ```
 
-The tests walk a fictional node from independent work to merge and check that incomplete rounds are blocked. Client-specific verification is listed in [Tool compatibility](collaboration/COMPATIBILITY.md).
+On Windows, use Python 3.11 or later and the .NET Framework C# compiler to build the launcher from the repository:
 
-## License
+```powershell
+python tools/build_windows_installer.py Agent-Collaboration-Setup.exe
+```
+
+The test suite exercises the fictional workflow and installer. Live conversation export and sharing across specific clients are tracked in [client compatibility](collaboration/COMPATIBILITY.md).
 
 [MIT License](LICENSE).

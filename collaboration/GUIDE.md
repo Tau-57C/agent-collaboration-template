@@ -4,7 +4,21 @@
 
 ## 1. Work on the mainline
 
-Update the current checkpoint as you work. Record a new checkpoint when a meaningful, verified result is ready. An assistant can continue from the saved next action when another assistant runs out of quota. Keep user corrections and decisions traceable to their visible source.
+| Situation | Record |
+|---|---|
+| A question is answered and has no follow-up | Leave the exchange in the conversation. |
+| An ongoing discussion could matter later, or the user requests a handoff | Update the discussion handoff in `PROJECT.md`. State the open question, useful findings or constraints, and what to ask next. Link an available source. |
+| Verified progress, a decision, blocker, or next action changes | Refresh the current state in `PROJECT.md`. Group small related updates. |
+| A verifiable milestone, verified merge, or user-requested checkpoint | Add a mainline checkpoint and apply the local Git rules below. |
+
+Before switching, tell the outgoing assistant “Save this discussion for a handoff.” Tell the incoming assistant “Continue from the mainline and resume our last discussion.” If the old assistant is unavailable, give the new one the relevant excerpt or export and ask it to continue. Save original dialogue when its wording or evidence matters. Unresolved ideas stay in the handoff until the user decides.
+
+### Local Git at checkpoints
+
+1. At setup, use the project root and its own repository. [New projects](ONBOARDING.md#new-project) initialize Git during collaboration setup. [Existing projects without Git](ONBOARDING.md#existing-project) record recovered checkpoints one at a time and preserve the current baseline separately. To use files only, set “Checkpoint Git” to “Files only” in `PROJECT.md`.
+2. With checkpoint Git enabled, commit once for each new mainline checkpoint, whether the assistant created it at a verified milestone or the user requested it. Save the mainline record and only verified changes in scope. A manual checkpoint can commit just `PROJECT.md`. Preserve existing staged changes. If related and unrelated changes cannot be separated safely, record the problem and leave the commit pending.
+3. Use a message like `N03 Verify first report layout`. Record the message in the checkpoint and report the resulting short ID. If a commit fails or no changes are eligible, preserve the checkpoint and state why. Before retrying, look for an existing commit for that checkpoint.
+4. Conversation exports and independent branch material remain in their archive paths. Discussions, handoffs, and independent deliveries stay at the current mainline checkpoint. Git operations stop at local commits. A push needs a separate request.
 
 ## 2. Prepare an independent round
 
@@ -40,14 +54,44 @@ When reviews are ready, the user selects what to adopt and picks a single merge 
 
 ## Copyable prompts
 
-| Step | Prompt |
-|---|---|
-| Initialize | Initialize this project. / 初始化协作。 |
-| Import | Import the existing project. / 导入旧项目。 |
-| Resume | Continue from the mainline. / 从主线继续。 |
-| Prepare | Branch from N03. Invite [participants]. / 从 N03 分岔，请【助手名单】参加。 |
-| Work | Complete N03 independently and record your delivery. / 按 N03 独立作答，做完就交付。 |
-| Check | Has everyone on the N03 roster delivered? / N03 名单上的助手都交付了吗？ |
-| Follow up | Stay independent and add [check]. / 保持独立，补做【事项】。 |
-| Review | Open N03 review. Compare the other submissions and evidence. / 开放 N03 互评，请看对方成果和对话。 |
-| Decide | Adopt [items] and verify the merge into the mainline. / 采用【方案】，验收后合回主线。 |
+Replace N03 with the actual node. To try again from an earlier checkpoint, put that checkpoint in the branch prompt. Start one new session per participant. When all selected participants deliver, ask the coordinator to open review, then ask each branch to review the others.
+
+### Set up
+
+| When             | Who                 | English                      | 简体中文     |
+| ---------------- | ------------------- | ---------------------------- | ------------ |
+| New project      | Project assistant   | Initialize collaboration.    | 初始化协作。 |
+| Existing project | Importing assistant | Import the existing project. | 导入旧项目。 |
+
+### Mainline and handoff
+
+| When                              | Who                          | English                                                         | 简体中文                         |
+| --------------------------------- | ---------------------------- | --------------------------------------------------------------- | -------------------------------- |
+| Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         | 继续主线，做【任务】。           |
+| Add materials                     | Current assistant            | Use [file] as input for the current task.                       | 把【文件】作为当前任务的材料。   |
+| Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    | 现在到哪个节点了？下一步是什么？ |
+| Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              | 把这里记为主线节点。             |
+| Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             | 记下这段讨论，我要换助手。       |
+| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     | 从主线继续。                     |
+| Resume a discussion               | Incoming assistant           | Continue from the mainline and resume our last discussion.      | 从主线继续，接着上次讨论。       |
+| Outgoing assistant is unavailable | Incoming assistant           | Continue from the mainline using the earlier messages I pasted. | 从主线继续，结合我贴的旧问答。   |
+
+### Branch, review, and merge
+
+| When                     | Who                       | English                                                                              | 简体中文                                    |
+| ------------------------ | ------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------- |
+| Branch from a checkpoint | Mainline assistant        | Branch from N03. Invite [participants] to do [task] independently.                   | 从 N03 分岔，请【助手名单】独立做【任务】。 |
+| Start independent work   | Each fresh session        | Work independently on N03 and record your delivery.                                  | 按 N03 独立作答，做完就交付。               |
+| Check deliveries         | Coordinator               | Who still needs to deliver for N03?                                                  | N03 谁还没交付？                            |
+| Follow up before review  | Selected branch assistant | Stay independent and add [item].                                                     | 保持独立，补做【事项】。                    |
+| Open review              | Coordinator               | Open review for N03.                                                                 | 开放 N03 互评。                             |
+| Review peers             | Each branch assistant     | Review the other N03 submissions and available dialogue against the shared criteria. | 按 N03 的标准，评审其他分支的成果和对话。   |
+| Decide and merge         | Designated merge owner    | For N03, adopt [items], then merge and verify.                                       | N03 采用【方案】，由你合并并验收。          |
+
+### As needed
+
+| When                        | Who                           | English                                                          | 简体中文                              |
+| --------------------------- | ----------------------------- | ---------------------------------------------------------------- | ------------------------------------- |
+| Archive the exact wording   | Assistant with the original   | Archive this conversation.                                       | 把这段对话原文归档。                  |
+| Inspect local versions      | Assistant with project access | Show the last five local Git commits.                            | 看最近 5 次本地 Git 提交。            |
+| Turn off checkpoint commits | Current assistant             | Record checkpoints in files only. Disable automatic Git commits. | 这个项目只记节点，关闭自动 Git 提交。 |

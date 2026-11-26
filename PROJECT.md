@@ -7,15 +7,17 @@
 | Project and goal | |
 | Current checkpoint | |
 | User decisions | |
+| Discussion handoff | Open question, useful findings or constraints, next question, and available sources |
 | Verified work and artifact version | |
 | Next action | |
 | Blocker or open question | |
 | Active independent node | |
+| Checkpoint Git | Local commits for new mainline checkpoints |
 | Updated by and when | |
 
 ## Checkpoint history
 
-| Checkpoint | Verified result | Version or saved materials | Decision or next action |
-|---|---|---|---|
+| Checkpoint | Verified result | Version or saved materials | Decision or next action | Git message or status |
+|---|---|---|---|---|
 
-To revisit an earlier checkpoint, record a new node pointed at the earlier saved materials. Keep the current mainline available until the user approves what should change.
+To revisit an earlier checkpoint, assign the independent round a new node ID and cite that checkpoint's saved materials. Keep the current mainline available until the user approves what should change.
