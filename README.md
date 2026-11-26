@@ -13,9 +13,9 @@ A file-based workflow for handing work between AI assistants and getting indepen
 
 ## Install
 
-- **Windows.** Download `Agent-Collaboration-Setup.exe` from [Releases](https://github.com/Tau-57C/agent-collaboration-template/releases), open it, and choose the project folder. Python 3.11 or later must be accessible through `py -3` or `python`.
-- **macOS.** Download and extract the source ZIP from [Releases](https://github.com/Tau-57C/agent-collaboration-template/releases), then open `Install on macOS.command` in that folder and choose the project root. Python 3.11 or later must be available as `python3`.
-- **Manual copy and command line.** Copy `AGENTS.md`, `PROJECT.md`, `collaboration/`, and `.gitignore` into the project root. For existing projects, preserve existing records and instructions. The previewable command-line installer can do this for you. [Installation options](collaboration/ONBOARDING.md#install-the-collaboration-files)
+- **Windows.** Open the [Windows installer](https://github.com/Tau-57C/agent-collaboration-template/releases/latest/download/Agent-Collaboration-Setup.exe) and select the project folder. It needs Python 3.11 or later through `py -3` or `python`.
+- **macOS.** Extract the [macOS installer ZIP](https://github.com/Tau-57C/agent-collaboration-template/releases/latest/download/Agent-Collaboration-Setup-macOS.zip), open `Install on macOS.command`, and select the project folder. It needs Python 3.11 or later as `python3`.
+[Manual copy and command-line options](collaboration/ONBOARDING.md#install-the-collaboration-files) are available for other setups.
 
 The file installer sets up collaboration files. Your assistant imports history and handles local checkpoint commits after you ask it to start or import. You can use the workflow with files alone by setting “Checkpoint Git” to “Files only.” [Local Git rules](collaboration/GUIDE.md#local-git-at-checkpoints)
 

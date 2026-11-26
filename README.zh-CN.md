@@ -13,9 +13,9 @@
 
 ## 安装
 
-- **Windows**。从[发行页](https://github.com/Tau-57C/agent-collaboration-template/releases)下载 `Agent-Collaboration-Setup.exe`。双击后选择项目根目录。电脑需要安装 Python 3.11 或更新版本，并能通过 `py -3` 或 `python` 启动。
-- **macOS**。从[发行页](https://github.com/Tau-57C/agent-collaboration-template/releases)下载源代码 ZIP 并解压。在解压目录打开 `Install on macOS.command`，选择项目根目录。电脑需要能用 `python3` 启动 Python 3.11 或更新版本。
-- **手工或命令行**。把 `AGENTS.md`、`PROJECT.md`、`collaboration/` 和 `.gitignore` 放到项目根目录。旧项目可先预览改动再安装，并整合同名文件。[安装选项](collaboration/ONBOARDING.md#install-the-collaboration-files)
+- **Windows**。双击 [Windows 安装器](https://github.com/Tau-57C/agent-collaboration-template/releases/latest/download/Agent-Collaboration-Setup.exe)，选择项目根目录。需要 Python 3.11 或更新版本，并能通过 `py -3` 或 `python` 启动。
+- **macOS**。解压 [macOS 安装包](https://github.com/Tau-57C/agent-collaboration-template/releases/latest/download/Agent-Collaboration-Setup-macOS.zip)，打开 `Install on macOS.command`，选择项目根目录。需要能用 `python3` 启动 Python 3.11 或更新版本。
+[手动复制和命令行备用方式](collaboration/ONBOARDING.md#install-the-collaboration-files)
 
 助手负责整理历史和保存本地版本。没有 Git 的旧项目，可核实的旧节点逐个留档，最后单独保存导入时的项目现状。想只用文件交接时，在 `PROJECT.md` 中把 “Checkpoint Git” 设为 “Files only”。[节点和本地 Git 规则](collaboration/GUIDE.md#local-git-at-checkpoints)
 

@@ -7,7 +7,7 @@
 For a new repository, use GitHub's template option. To bring collaboration into a local project, put `AGENTS.md`, `PROJECT.md`, `collaboration/`, and `.gitignore` at its root. You can use any of these methods:
 
 - **Windows launcher.** Get `Agent-Collaboration-Setup.exe` from the [published releases](https://github.com/Tau-57C/agent-collaboration-template/releases), open it, and select the project root. It needs Python 3.11 or later, accessible through `py -3` or `python`. It uses the same file installer as the command below.
-- **macOS launcher.** Extract the [release source ZIP](https://github.com/Tau-57C/agent-collaboration-template/releases), open `Install on macOS.command` in the extracted folder, and choose the project root. It needs Python 3.11 or later as `python3`. If Finder cannot launch the script, use the command-line method below from that same folder.
+- **macOS launcher.** Extract the [macOS installer ZIP](https://github.com/Tau-57C/agent-collaboration-template/releases/latest/download/Agent-Collaboration-Setup-macOS.zip), open `Install on macOS.command` in the extracted folder, and choose the project root. It needs Python 3.11 or later as `python3`. If Finder cannot launch the script, use the command-line method below from that same folder.
 - **Command line.** Run the preview first, then apply it after checking the file changes. The script needs Python 3.11 or later. Use `python3` on systems where that is the Python 3 command.
 
   ```sh
