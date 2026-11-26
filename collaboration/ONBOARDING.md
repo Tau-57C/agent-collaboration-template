@@ -16,8 +16,17 @@ Start ordinary work on the mainline. The assistant adds checkpoints as work prod
 
 ### 1. Bring in the core files
 
-- Copy or merge `AGENTS.md` and `PROJECT.md` at the project root, and copy `collaboration/`. Keep existing project rules, documents, and directories. If a destination file already exists, merge the relevant sections into it.
-- Add the runtime ignore entries from the template's `.gitignore` when using Git. The local verifier in `tools/` is optional.
+From a fresh checkout of the template, run:
+
+```sh
+python tools/install.py "/path/to/existing-project"
+python tools/install.py "/path/to/existing-project" --apply
+```
+
+The first command previews the file changes. Apply appends a marked collaboration section to an existing `AGENTS.md` and adds the local history paths to `.gitignore`. It keeps `PROJECT.md` and `collaboration/ARCHIVE.md` if they already exist. If a guide or template in the target has different content, review and resolve that conflict before applying.
+
+Manual setup is also available. Copy or merge `AGENTS.md`, `PROJECT.md`, and `collaboration/` into the project root, preserving the existing project rules. When using Git, add the runtime ignore entries from the template's `.gitignore`. The verifier `tools/check_node.py` is optional.
+
 - Pick one assistant for the import. Give it the current project folder and access to the relevant histories or exported files.
 
 ### 2. Import history with that assistant

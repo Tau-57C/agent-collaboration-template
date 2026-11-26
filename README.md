@@ -13,6 +13,17 @@ A reusable, file-based workflow for switching between AI assistants and getting 
 
 [Workflow and short prompts](collaboration/GUIDE.md) · [Participant examples](collaboration/PARTICIPANTS.md) · [Tool compatibility](collaboration/COMPATIBILITY.md) · [Complete fictional example](examples/report-layout/N03/)
 
+## Install into an existing project
+
+From a fresh copy of this template, run the preview, then apply the installation:
+
+```sh
+python tools/install.py "/path/to/existing-project"
+python tools/install.py "/path/to/existing-project" --apply
+```
+
+Use Python 3.11 or newer. The installer preserves existing project progress, archive entries, and agent instructions. After installation, ask one assistant to “Import the existing project” to reconstruct progress and archive the available conversations. [Import steps](collaboration/ONBOARDING.md)
+
 ## What the repo contains
 
 | Path | Purpose |
@@ -22,6 +33,7 @@ A reusable, file-based workflow for switching between AI assistants and getting 
 | [collaboration/templates/](collaboration/templates/) | Shared brief, participant roster, submissions, approvals, and reviews |
 | [collaboration/ARCHIVE.md](collaboration/ARCHIVE.md) | Links to transcripts and decisions |
 | [examples/](examples/) | Fictional records that show a round with six participants |
+| [tools/install.py](tools/install.py) | Optional installer for existing projects, with a read-only preview |
 | [tools/check_node.py](tools/check_node.py) | Optional local checker for the roster, review gate, and merge records |
 
 Agents may have different access to chat history. They can share visible messages by exporting them to ordinary files. The independent phase follows an explicit read scope. Use workspace permissions when you need enforced isolation. Session exports, real working nodes, and branch artifacts should stay local by default. The included Git ignore rules cover the designated runtime folders.
