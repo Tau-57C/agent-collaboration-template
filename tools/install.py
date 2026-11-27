@@ -26,7 +26,11 @@ CORE_FILES = (
     "collaboration/templates/node.json",
     "collaboration/templates/status.json",
 )
-IGNORE_ENTRIES = (b"/collaboration/nodes/", b"/collaboration/mainline-transcripts/")
+IGNORE_ENTRIES = (
+    b"/collaboration/nodes/",
+    b"/collaboration/mainline-notes/",
+    b"/collaboration/mainline-transcripts/",
+)
 START = b"<!-- agent-collaboration:start -->"
 END = b"<!-- agent-collaboration:end -->"
 

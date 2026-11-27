@@ -15,6 +15,11 @@
 | Checkpoint Git | Local commits for new mainline checkpoints |
 | Updated by and when | |
 
+## Session notes covered
+
+| Session note link | Last entry covered in the mainline |
+|---|---|
+
 ## Checkpoint history
 
 | Checkpoint | Verified result | Version or saved materials | Decision or next action | Git message or status |

@@ -37,6 +37,7 @@ Replace N03 and bracketed placeholders with your checkpoint and task details.
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       |
 | Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    |
+| List all checkpoints              | Current assistant            | List all checkpoints.                                           |
 | Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              |
 | Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             |
 | Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     |

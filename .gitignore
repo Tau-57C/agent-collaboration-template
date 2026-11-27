@@ -1,5 +1,6 @@
 # Runtime project data may contain conversations and unpublished artifacts.
 /collaboration/nodes/
+/collaboration/mainline-notes/
 /collaboration/mainline-transcripts/
 __pycache__/
 *.py[cod]

@@ -6,12 +6,26 @@
 
 | Situation | Record |
 |---|---|
-| A question is answered and has no follow-up | Leave the exchange in the conversation. |
+| The assistant completes a mainline reply | Append one short session note before sending, even if related user messages were answered together. |
 | An ongoing discussion could matter later, or the user requests a handoff | Update the discussion handoff in `PROJECT.md`. State the open question, useful findings or constraints, and what to ask next. Link an available source. |
 | Verified progress, a decision, blocker, or next action changes | Refresh the current state in `PROJECT.md`. Group small related updates. |
 | A verifiable milestone, verified merge, or user-requested checkpoint | Add a mainline checkpoint and apply the local Git rules below. |
 
-Before switching, tell the outgoing assistant “Save this discussion for a handoff.” Tell the incoming assistant “Continue from the mainline and resume our last discussion.” If the old assistant is unavailable, give the new one the relevant excerpt or export and ask it to continue. Save original dialogue when its wording or evidence matters. Unresolved ideas stay in the handoff until the user decides.
+For “List all checkpoints,” use the history in `PROJECT.md` and independent node records under `collaboration/nodes/`. List IDs, types, and known stages in ID order. Mark the current mainline checkpoint and follow existing access rules.
+
+### Session notes
+
+- Save mainline notes in `collaboration/mainline-notes/` under a stable, unique name. When a durable client session ID is available, record it with the client name in the note and use it to recover the file. Otherwise reuse the note path previously recorded in this chat. When creating a note without a client session ID, include its link once in this chat so the assistant can recover the path in a later reply.
+- Use the visible title or discussion topic as the heading and update it when a new title is available. If no session ID or previous link identifies the note, start a new note and retain the older notes for handoff. Do not match by title or require the user to recall a name, ID, or path.
+- Append a numbered line stating the topic and outcome or open issue. Use the current exchange and the end of the note. Preserve selected visible wording in the [archive](ARCHIVE.md) when a decision, constraint, or evidence needs exact wording. Link to an existing copy when available.
+- During an independent round, keep any branch session notes with that branch under its access rules.
+
+### Hand off a discussion
+
+1. Tell the outgoing assistant “Save this discussion for a handoff.” It finds the relevant mainline notes in the project. For a general handoff, check all mainline notes for entries still to cover. If the user names a task, use that scope. When the outgoing assistant is unavailable, the incoming assistant follows these same steps. Note any known missing source.
+2. Read `PROJECT.md`, including checkpoint history. List the note paths and check their headings and latest entry numbers against the “Session notes covered” table. For relevant notes, read entries after the recorded number. Start at the first entry if the file has no prior coverage. Follow original material links as needed.
+3. Update the current state and discussion handoff. Consolidate repeated points across notes and link their sources. Keep other active discussions and label handoff items by topic. Advance each file’s coverage only through the last entry actually accounted for. Keep the coverage record after a discussion ends.
+4. Tell the incoming assistant “Continue from the mainline and resume our last discussion.” “Continue from the mainline” is enough to start a handoff in the incoming chat. Supply any excerpts or exports you already have if the saved records leave a gap. Unresolved ideas stay in the handoff until the user decides.
 
 ### Local Git at checkpoints
 
@@ -70,6 +84,7 @@ Replace N03 with the actual node. To try again from an earlier checkpoint, put t
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         | 继续主线，做【任务】。           |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       | 把【文件】作为当前任务的材料。   |
 | Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    | 现在到哪个节点了？下一步是什么？ |
+| List all checkpoints              | Current assistant            | List all checkpoints.                                           | 列出所有节点。                   |
 | Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              | 把这里记为主线节点。             |
 | Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             | 记下这段讨论，我要换助手。       |
 | Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     | 从主线继续。                     |
