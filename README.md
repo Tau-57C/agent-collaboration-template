@@ -34,33 +34,33 @@ Replace N03 and bracketed placeholders with your checkpoint and task details.
 
 | When                              | Who                          | Say                                                             |
 | --------------------------------- | ---------------------------- | --------------------------------------------------------------- |
+| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     |
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       |
-| Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    |
+| Check progress                    | Current assistant            | What’s the current checkpoint and next step?                    |
 | List all checkpoints              | Current assistant            | List all checkpoints.                                           |
 | Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              |
-| Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             |
-| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     |
-| Resume a discussion               | Incoming assistant           | Continue from the mainline and resume our last discussion.      |
-| Outgoing assistant is unavailable | Incoming assistant           | Continue from the mainline using the earlier messages I pasted. |
+| Prepare a handoff (optional)      | Outgoing assistant           | Save open discussions for handoff.                              |
+| Resume a specific topic           | Incoming assistant           | Continue from the mainline on [topic].                          |
+| Supply missing chat excerpts      | Incoming assistant           | Continue from the mainline using these excerpts.                |
 
 ### Branch, review, and merge
 
 | When                     | Who                       | Say                                                                                  |
 | ------------------------ | ------------------------- | ------------------------------------------------------------------------------------ |
 | Branch from a checkpoint | Mainline assistant        | Branch from N03. Invite [participants] to do [task] independently.                   |
-| Start independent work   | Each fresh session        | Work independently on N03 and record your delivery.                                  |
+| Start independent work   | Each fresh session        | Work independently on N03, then record delivery.                                     |
 | Check deliveries         | Coordinator               | Who still needs to deliver for N03?                                                  |
 | Follow up before review  | Selected branch assistant | Stay independent and add [item].                                                     |
 | Open review              | Coordinator               | Open review for N03.                                                                 |
-| Review peers             | Each branch assistant     | Review the other N03 submissions and available dialogue against the shared criteria. |
+| Review peers             | Each branch assistant     | Review other branches’ work and dialogue using N03 criteria.                         |
 | Decide and merge         | Designated merge owner    | For N03, adopt [items], then merge and verify.                                       |
 
 ### As needed
 
 | When                        | Who                           | Say                                                              |
 | --------------------------- | ----------------------------- | ---------------------------------------------------------------- |
-| Archive the exact wording   | Assistant with the original   | Archive this conversation.                                       |
+| Archive the exact wording   | Assistant with the original   | Archive this excerpt verbatim.                                   |
 | Inspect local versions      | Assistant with project access | Show the last five local Git commits.                            |
 | Turn off checkpoint commits | Current assistant             | Record checkpoints in files only. Disable automatic Git commits. |
 

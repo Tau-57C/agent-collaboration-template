@@ -22,10 +22,10 @@ For “List all checkpoints,” use the history in `PROJECT.md` and independent 
 
 ### Hand off a discussion
 
-1. Tell the outgoing assistant “Save this discussion for a handoff.” It finds the relevant mainline notes in the project. For a general handoff, check all mainline notes for entries still to cover. If the user names a task, use that scope. When the outgoing assistant is unavailable, the incoming assistant follows these same steps. Note any known missing source.
+1. Tell the incoming assistant “Continue from the mainline.” If the outgoing assistant has details that are still missing, you can first say “Save open discussions for handoff.” The assistant handling the handoff finds the relevant mainline notes in the project. For a general handoff, check all mainline notes for entries still to cover. If the user names a task, use that scope. When the outgoing assistant is unavailable, the incoming assistant follows these same steps. Note any known missing source.
 2. Read `PROJECT.md`, including checkpoint history. List the note paths and check their headings and latest entry numbers against the “Session notes covered” table. For relevant notes, read entries after the recorded number. Start at the first entry if the file has no prior coverage. Follow original material links as needed.
 3. Update the current state and discussion handoff. Consolidate repeated points across notes and link their sources. Keep other active discussions and label handoff items by topic. Advance each file’s coverage only through the last entry actually accounted for. Keep the coverage record after a discussion ends.
-4. Tell the incoming assistant “Continue from the mainline and resume our last discussion.” “Continue from the mainline” is enough to start a handoff in the incoming chat. Supply any excerpts or exports you already have if the saved records leave a gap. Unresolved ideas stay in the handoff until the user decides.
+4. To resume a specific discussion, say “Continue from the mainline on [topic].” If key details are missing, share excerpts or exports you have. For pasted excerpts, say “Continue from the mainline using these excerpts.” Unresolved ideas stay in the handoff until the user decides.
 
 ### Local Git at checkpoints
 
@@ -81,32 +81,32 @@ Replace N03 with the actual node. To try again from an earlier checkpoint, put t
 
 | When                              | Who                          | English                                                         | 简体中文                         |
 | --------------------------------- | ---------------------------- | --------------------------------------------------------------- | -------------------------------- |
+| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     | 从主线继续。                     |
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         | 继续主线，做【任务】。           |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       | 把【文件】作为当前任务的材料。   |
-| Check progress                    | Current assistant            | What checkpoint are we at, and what is next?                    | 现在到哪个节点了？下一步是什么？ |
+| Check progress                    | Current assistant            | What’s the current checkpoint and next step?                    | 当前节点和下一步是什么？         |
 | List all checkpoints              | Current assistant            | List all checkpoints.                                           | 列出所有节点。                   |
 | Record a checkpoint               | Current assistant            | Record a mainline checkpoint here.                              | 把这里记为主线节点。             |
-| Save an open discussion           | Outgoing assistant           | Save this discussion for a handoff.                             | 记下这段讨论，我要换助手。       |
-| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     | 从主线继续。                     |
-| Resume a discussion               | Incoming assistant           | Continue from the mainline and resume our last discussion.      | 从主线继续，接着上次讨论。       |
-| Outgoing assistant is unavailable | Incoming assistant           | Continue from the mainline using the earlier messages I pasted. | 从主线继续，结合我贴的旧问答。   |
+| Prepare a handoff (optional)      | Outgoing assistant           | Save open discussions for handoff.                              | 记下待续讨论，我要换助手。       |
+| Resume a specific topic           | Incoming assistant           | Continue from the mainline on [topic].                          | 从主线继续，接着聊【主题】。     |
+| Supply missing chat excerpts      | Incoming assistant           | Continue from the mainline using these excerpts.                | 从主线继续，参考我贴的旧问答。   |
 
 ### Branch, review, and merge
 
 | When                     | Who                       | English                                                                              | 简体中文                                    |
 | ------------------------ | ------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------- |
 | Branch from a checkpoint | Mainline assistant        | Branch from N03. Invite [participants] to do [task] independently.                   | 从 N03 分岔，请【助手名单】独立做【任务】。 |
-| Start independent work   | Each fresh session        | Work independently on N03 and record your delivery.                                  | 按 N03 独立作答，做完就交付。               |
+| Start independent work   | Each fresh session        | Work independently on N03, then record delivery.                                     | 按 N03 独立做，完成后交付。                 |
 | Check deliveries         | Coordinator               | Who still needs to deliver for N03?                                                  | N03 谁还没交付？                            |
 | Follow up before review  | Selected branch assistant | Stay independent and add [item].                                                     | 保持独立，补做【事项】。                    |
 | Open review              | Coordinator               | Open review for N03.                                                                 | 开放 N03 互评。                             |
-| Review peers             | Each branch assistant     | Review the other N03 submissions and available dialogue against the shared criteria. | 按 N03 的标准，评审其他分支的成果和对话。   |
+| Review peers             | Each branch assistant     | Review other branches’ work and dialogue using N03 criteria.                         | 按 N03 标准评审其他分支的成果和对话。       |
 | Decide and merge         | Designated merge owner    | For N03, adopt [items], then merge and verify.                                       | N03 采用【方案】，由你合并并验收。          |
 
 ### As needed
 
 | When                        | Who                           | English                                                          | 简体中文                              |
 | --------------------------- | ----------------------------- | ---------------------------------------------------------------- | ------------------------------------- |
-| Archive the exact wording   | Assistant with the original   | Archive this conversation.                                       | 把这段对话原文归档。                  |
+| Archive the exact wording   | Assistant with the original   | Archive this excerpt verbatim.                                   | 归档这段对话原文。                    |
 | Inspect local versions      | Assistant with project access | Show the last five local Git commits.                            | 看最近 5 次本地 Git 提交。            |
 | Turn off checkpoint commits | Current assistant             | Record checkpoints in files only. Disable automatic Git commits. | 这个项目只记节点，关闭自动 Git 提交。 |
