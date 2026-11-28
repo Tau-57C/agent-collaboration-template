@@ -9,6 +9,7 @@
 | The assistant completes a mainline reply | Append one short session note before sending, even if related user messages were answered together. |
 | An ongoing discussion could matter later, or the user requests a handoff | Update the discussion handoff in `PROJECT.md`. State the open question, useful findings or constraints, and what to ask next. Link an available source. |
 | Verified progress, a decision, blocker, or next action changes | Refresh the current state in `PROJECT.md`. Group small related updates. |
+| Starting a new mainline task | Read the current-state table in `PROJECT.md` first. Reuse context for routine follow-ups on the same task. |
 | A verifiable milestone, verified merge, or user-requested checkpoint | Add a mainline checkpoint and apply the local Git rules below. |
 
 For “List all checkpoints,” use the history in `PROJECT.md` and independent node records under `collaboration/nodes/`. List IDs, types, and known stages in ID order. Mark the current mainline checkpoint and follow existing access rules.
@@ -26,6 +27,15 @@ For “List all checkpoints,” use the history in `PROJECT.md` and independent 
 2. Read `PROJECT.md`, including checkpoint history. List the note paths and check their headings and latest entry numbers against the “Session notes covered” table. For relevant notes, read entries after the recorded number. Start at the first entry if the file has no prior coverage. Follow original material links as needed.
 3. Update the current state and discussion handoff. Consolidate repeated points across notes and link their sources. Keep other active discussions and label handoff items by topic. Advance each file’s coverage only through the last entry actually accounted for. Keep the coverage record after a discussion ends.
 4. To resume a specific discussion, say “Continue from the mainline on [topic].” If key details are missing, share excerpts or exports you have. For pasted excerpts, say “Continue from the mainline using these excerpts.” Unresolved ideas stay in the handoff until the user decides.
+
+### Save the mainline record
+
+Every mainline session uses this save procedure to update `PROJECT.md`, including during setup, handoff, and checkpoint creation. It uses Python 3.11 or later. Run from the project root.
+
+1. Run `python collaboration/update_project.py read` before drafting the update. Save the revision printed on the first line and use the Markdown that follows as the base.
+2. Put the complete updated Markdown in a private temporary UTF-8 file. Preserve changes and notes from other sessions in that base. Run `python collaboration/update_project.py apply REVISION DRAFT_PATH` with the revision from step 1.
+3. An overlapping save can hold the write lock briefly. If the command returns 3, retry with the same revision and draft. If it returns 2, read again and merge the intended changes with the latest record before retrying. If two updates disagree on a decision or a checkpoint, resolve the discrepancy before saving. Advance note coverage only for entries actually included.
+4. Wait for a successful save before reporting the mainline update or proceeding to its checkpoint commit. When the helper cannot run, have one session write back and let the others save their session notes.
 
 ### Local Git at checkpoints
 
@@ -79,9 +89,11 @@ Replace N03 with the actual node. To try again from an earlier checkpoint, put t
 
 ### Mainline and handoff
 
+For a new mainline task, the assistant first reads the current-state table. When switching chats or catching up on session notes, say “Continue from the mainline and do [task].”
+
 | When                              | Who                          | English                                                         | 简体中文                         |
 | --------------------------------- | ---------------------------- | --------------------------------------------------------------- | -------------------------------- |
-| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     | 从主线继续。                     |
+| Switch sessions or resume after merge | Next mainline session | Continue from the mainline. | 从主线继续。 |
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         | 继续主线，做【任务】。           |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       | 把【文件】作为当前任务的材料。   |
 | Check progress                    | Current assistant            | What’s the current checkpoint and next step?                    | 当前节点和下一步是什么？         |

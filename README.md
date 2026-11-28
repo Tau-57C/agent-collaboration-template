@@ -32,9 +32,11 @@ Replace N03 and bracketed placeholders with your checkpoint and task details.
 
 ### Mainline and handoff
 
+For a new mainline task, the assistant first reads the current-state table. When switching chats or catching up on session notes, say “Continue from the mainline and do [task].”
+
 | When                              | Who                          | Say                                                             |
 | --------------------------------- | ---------------------------- | --------------------------------------------------------------- |
-| Resume or return after merge      | Incoming or branch assistant | Continue from the mainline.                                     |
+| Switch sessions or resume after merge | Next mainline session | Continue from the mainline. |
 | Advance the work                  | Current assistant            | Continue on the mainline and do [task].                         |
 | Add materials                     | Current assistant            | Use [file] as input for the current task.                       |
 | Check progress                    | Current assistant            | What’s the current checkpoint and next step?                    |

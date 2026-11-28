@@ -17,6 +17,7 @@ CORE_FILES = (
     "collaboration/GUIDE.md",
     "collaboration/ONBOARDING.md",
     "collaboration/PARTICIPANTS.md",
+    "collaboration/update_project.py",
     "collaboration/templates/BRIEF.md",
     "collaboration/templates/FINAL.md",
     "collaboration/templates/REVIEW-OPEN.md",
@@ -28,6 +29,7 @@ CORE_FILES = (
 )
 IGNORE_ENTRIES = (
     b"/collaboration/nodes/",
+    b"/collaboration/.project-write.lock",
     b"/collaboration/mainline-notes/",
     b"/collaboration/mainline-transcripts/",
 )
